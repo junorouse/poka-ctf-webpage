@@ -1,0 +1,43 @@
+<style>
+* {
+	margin: 0;
+	padding: 0;	
+}
+
+h1 {
+	font-size: 120px;
+}
+
+#wtf {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate3d(-50%, -50%, 0);
+	color: red;
+}
+</style>
+
+<div style="width: 100%; height: 100%; text-align: center;">
+	<div id="wtf">
+		<h1>{{ who }}<br/>KILLS<br/>{{ what }} !</h1>
+	</div>
+	<img src="/static/firstblood.gif" style="width: 80%">
+</div>
+
+<video autoplay loop>
+  <source src="/static/firstblood.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<script>
+	let ss = 1;
+	setInterval(function() {
+		if (ss) {
+			document.getElementById('wtf').style.color='white';
+			ss = 0;
+		} else {
+			document.getElementById('wtf').style.color='red';
+			ss = 1;
+		}
+	}, 400);
+</script>

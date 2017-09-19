@@ -89,3 +89,9 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+
+# my project
+
+db.sqlite3
+init.py

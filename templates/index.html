@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.2/css/bulma.css">
+    <link rel="stylesheet" href="/static/wtf.css">
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+
+    <title>2017 포카전 - 해킹</title>
+    <script>
+        if ( {% if is_end %}1{% else %}0{% endif %} ) {
+            location.href = '/end';
+        }
+    </script>
+</head>
+
+<body style="background-image: url('/static/back.jpeg')">
+<div id="login_view" class="login_view">
+
+<form method="POST" action="/login">
+    <div class="field">
+      <p class="control has-icons-left has-icons-right">
+        <input class="input" name="username" type="text" placeholder="Username">
+        <span class="icon is-small is-left">
+          <i class="fa fa-user"></i>
+        </span>
+        <span class="icon is-small is-right">
+          <i class="fa fa-check"></i>
+        </span>
+      </p>
+    </div>
+    <div class="field">
+      <p class="control has-icons-left">
+        <input class="input" name="password" type="password" placeholder="Password">
+        <span class="icon is-small is-left">
+          <i class="fa fa-lock"></i>
+        </span>
+      </p>
+    </div>
+    <div class="field">
+      <p class="control">
+        <button class="button is-success">
+          Login
+        </button>
+      </p>
+    </div>
+</form>
+
+</div>
+
+<div id="challenge_view" class="challenge_view">
+    <div class="challenge_title">
+        <h1 id="real_title">로그인을 해주세요.</h1>
+        <img src="http://freevector.co/wp-content/uploads/2013/03/8934-close-button1.png" class="close_button" onclick="closeChall();">
+    </div>
+    <hr>
+    <div class="challenge_detail">
+        <pre id="real_detail">
+로그인을 부탁드리겠습니다.
+로그인 로그인 로그인
+<a class="button login">{{ is_login }}</a>
+    </pre>
+    </div>
+    <div class="challenge_auth">
+        <input type='hidden' id='chall_id'>
+        <hr>
+        <div class="challenge_real_auth">
+            <input class="input" type="text" id="flag" placeholder="give me the flag!">
+        </div>
+    </div>
+
+</div>
+
+<div id="top">
+    <!-- fucking bug -->
+    <div id="countdown" class="timer"></div>
+    <div id="real_top">
+        <div id="cccc">
+            <div id="notice">
+                <h2>Notice</h2>
+                <pre id="notice_pre" class="style-1">
+{% for notice in notices %}{{ notice }}
+{% endfor %}
+                </pre>
+            </div>
+            <div id="auth_log">
+                <h2>Auth Log</h2>
+                <pre id="auth_log_pre" class="style-1">
+{% for auth_log in auth_logs %}{{ auth_log }}
+{% endfor %}
+                </pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="wtf" class="wtf">
+    <h1>hello {{ session.username }}</h1>
+    <div class="sex">
+        {% if not is_blind_postech  %}
+        <div class="bingo">
+            <img src="http://sciencewar.postech.ac.kr/static/images/postech.png" width=300px />
+            <br />
+            빙고 수 : {{ postech_bingo_count }}
+            <br />
+            점수 : {{ postech_score }}
+            <br />
+            <hr style="margin-left: 10%; margin-right: 10%;">
+            <div style="width: 100%;">
+                <table style="background: url('http://theplantnewspaper.com/wp-content/uploads/2016/08/bg.gif');">
+                <tr><td class="square0"></td><td class="square1"></td><td class="square2"></td><td class="square3"></td><td class="square4"></td></tr><tr><td class="square5"></td><td class="square6"></td><td class="square7"></td><td class="square8"></td><td class="square9"></td></tr><tr><td class="square10"></td><td class="square11"></td><td class="square12"></td><td class="square13"></td><td class="square14"></td></tr><tr><td class="square15"></td><td class="square16"></td><td class="square17"></td><td class="square18"></td><td class="square19"></td></tr><tr><td class="square20"></td><td class="square21"></td><td class="square22"></td><td class="square23"></td><td class="square24"></td></tr>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+        {% if not is_blind_kaist  %}
+        <div class="bingo">
+            <img src="http://sciencewar.postech.ac.kr/static/images/kaist.png" width=280px />
+            <br />
+            빙고 수 : {{ kaist_bingo_count }}
+            <br />
+            점수 : {{ kaist_score }}
+            <br />
+            <hr style="margin-left: 10%; margin-right: 10%;">
+            <div style="width: 100%;">
+                <table style="background: url('https://s-media-cache-ak0.pinimg.com/originals/1b/2c/e5/1b2ce51aafb6e39870bbbc371b5a6185.jpg');">
+                <tr><td class="square0"></td><td class="square1"></td><td class="square2"></td><td class="square3"></td><td class="square4"></td></tr><tr><td class="square5"></td><td class="square6"></td><td class="square7"></td><td class="square8"></td><td class="square9"></td></tr><tr><td class="square10"></td><td class="square11"></td><td class="square12"></td><td class="square13"></td><td class="square14"></td></tr><tr><td class="square15"></td><td class="square16"></td><td class="square17"></td><td class="square18"></td><td class="square19"></td></tr><tr><td class="square20"></td><td class="square21"></td><td class="square22"></td><td class="square23"></td><td class="square24"></td></tr>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="bb">
+</div>
+
+<script>
+
+</script>
+
+<div class="footer">
+    <marquee>Powered by <a href="http://leave.cat" target="_blank">LeaveCat</a>.</marquee>
+<div>
+
+<script>
+    let isBlindKaist = {% if is_blind_postech %}1{% else %}0{% endif %};
+</script>
+<script src="/static/wtf.js"></script>
+</body>
+
+</html>
