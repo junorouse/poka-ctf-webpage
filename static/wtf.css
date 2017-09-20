@@ -2,7 +2,7 @@
 .wtf {
     /*background: skyblue;*/
     width: 100%;
-    height: 500px;
+    height: 700px;
     opacity: 1;
 }
 
@@ -22,7 +22,7 @@
 hr {
     border: 0;
     height: 2px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(95, 135, 175, 0.75), rgba(0, 0, 0, 0));
 }
 
 .juno {
@@ -248,7 +248,7 @@ th {
 #top {
     width: 100%;
     height: 200px;
-    margin-bottom: 240px;
+    margin-bottom: 380px;
 }
 
 #real_top {
@@ -259,7 +259,7 @@ th {
 
 #notice_pre {
     width: 100%;
-    height: 100px;
+    height: 140px;
     background: transparent;
 
     overflow-y: scroll;
@@ -272,19 +272,19 @@ th {
     width: 49%;
     height: 200px;
     display: inline-block;
-    padding: 10px;
+    padding: 10px 10px 0px 10px;
 }
 
 #auth_log {
     width: 49%;
     height: 200px;
     display: inline-block;
-    padding: 10px;
+    padding: 10px 10px 0px 10p;
 }
 
 #auth_log_pre {
     width: 100%;
-    height: 100px;
+    height: 140px;
     background: transparent;
     overflow-y: scroll;
     color: rgba(176, 174, 161, 1);
@@ -317,4 +317,21 @@ th {
     padding: 10px;
     color: rgba(206, 75, 23, 1);
     font-family: lato !important;
+}
+
+.bbb {
+    font-family: 'Orbitron', sans-serif;
+    text-align: left;
+    width: 400px;
+    font-size: 32px;
+    margin: auto;
+    border-radius: 5px;
+    padding: 10px 0px 10px 30px;
+    border: 5px solid #456492;
+    background: #231b1b;
+    margin-top: 10px;
+    color: #fff;
+}
+.logoimg {
+    height: 340px;
 }

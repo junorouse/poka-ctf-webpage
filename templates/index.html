@@ -4,6 +4,7 @@
     <meta charset='utf-8' />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.2/css/bulma.css">
+    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/static/wtf.css">
     <script
       src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -80,6 +81,18 @@
     <div id="countdown" class="timer"></div>
     <div id="real_top">
         <div id="cccc">
+            <div id="welcome" style="padding: 10px 10px 0px 10px;">
+                <h1 style="font-size: 42px; color: rgba(227, 99, 20, 1); font-family: lato;">
+                {% if session.username %}
+                Hello {{ session.username | upper }}!
+                {% else %}
+                Please Login
+                {% endif %}
+                </h1>
+            </div>
+            <div style="padding: 0px 20px 0px 20px">
+                <hr>
+            </div>
             <div id="notice">
                 <h2>Notice</h2>
                 <pre id="notice_pre" class="style-1">
@@ -101,15 +114,16 @@
 
 
 <div id="wtf" class="wtf">
-    <h1>hello {{ session.username }}</h1>
     <div class="sex">
         {% if not is_blind_postech  %}
         <div class="bingo">
-            <img src="http://sciencewar.postech.ac.kr/static/images/postech.png" width=300px />
+            <img src="http://sciencewar.postech.ac.kr/static/images/postech.png" class="logoimg" />
             <br />
-            빙고 수 : {{ postech_bingo_count }}
-            <br />
-            점수 : {{ postech_score }}
+            <div class="bbb">
+                BINGO&nbsp;&nbsp;: {{ postech_bingo_count }}
+                <br />
+                SCORE : {{ postech_score }}
+            </div>
             <br />
             <hr style="margin-left: 10%; margin-right: 10%;">
             <div style="width: 100%;">
@@ -121,11 +135,13 @@
         {% endif %}
         {% if not is_blind_kaist  %}
         <div class="bingo">
-            <img src="http://sciencewar.postech.ac.kr/static/images/kaist.png" width=280px />
+            <img src="/static/kaist_transparent.png" class="logoimg" />
             <br />
-            빙고 수 : {{ kaist_bingo_count }}
-            <br />
-            점수 : {{ kaist_score }}
+                <div class="bbb">
+                BINGO&nbsp;&nbsp;: {{ kaist_bingo_count }}
+                <br />
+                SCORE : {{ kaist_score }}
+            </div>
             <br />
             <hr style="margin-left: 10%; margin-right: 10%;">
             <div style="width: 100%;">
