@@ -21,13 +21,15 @@ class Challenge(Base):
 	id = Column(Integer, primary_key=True)
 	chall_id = Column(Integer, unique=True)
 	chall_title = Column(String(512))
+	chall_img = Column(String(256))
 	chall_detail = Column(String(4096))
 	chall_score = Column(Integer)
 	chall_flag = Column(String(512))
 
-	def __init__(self, chall_id, chall_title, chall_detail, chall_score, chall_flag):
+	def __init__(self, chall_id, chall_title, chall_img, chall_detail, chall_score, chall_flag):
 		self.chall_id = int(chall_id)
 		self.chall_title = chall_title
+		self.chall_img = chall_img
 		self.chall_detail = chall_detail
 		self.chall_score = int(chall_score)
 		self.chall_flag = chall_flag

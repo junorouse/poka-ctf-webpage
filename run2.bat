@@ -1,0 +1,1 @@
+python C:\Users\teapoint\Desktop\todo\poka_ctf\homepage\poka-ctf-webpage\app2.py

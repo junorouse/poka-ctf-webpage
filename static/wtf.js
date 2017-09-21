@@ -97,16 +97,16 @@ function refreshChalls() {
         url: '/api/get_challs',
         success: function(data) {
             var data = JSON.parse(data);
-            for (i=0; i<25; i++) {
+            for (i=0; i<16; i++) {
                 var currentSquare = "square" + i;
                 if (data.challs[i].is_kaist) {
-                    k = "kaist_clear";
+                    k = "<img src='/static/img/clear.png' width=100% height=100%>";
                 } else {
                     k = "";
                 }
 
                 if (data.challs[i].is_postech) {
-                    p = "postech_clear";
+                    p = "<img src='/static/img/clear.png' width=100% height=100%>";
                 } else {
                     p = "";
                 }
@@ -116,14 +116,14 @@ function refreshChalls() {
                 }
 
                 try {
-                    document.getElementsByClassName(currentSquare)[0].innerHTML = "<div class='juno "+p+"'><div class='prob'>"+data.challs[i].chall_title+"</div></div>";
+                    document.getElementsByClassName(currentSquare)[0].innerHTML = "<div class='juno' style='background: url(\"/static/img/"+data.challs[i].chall_img+"\"); background-position: center; background-repeat: no-repeat; background-size: cover;'><div class='prob'>"+p+"</div></div>";
                     document.getElementsByClassName(currentSquare)[0].addEventListener("click", showChall);
                 } catch (e) {
 
                 }
 
                 try {
-                    document.getElementsByClassName(currentSquare)[1].innerHTML = "<div class='juno "+k+"'><div class='prob'>"+data.challs[i].chall_title+"</div></div>";
+                    document.getElementsByClassName(currentSquare)[1].innerHTML = "<div class='juno' style='background: url(\"/static/img/"+data.challs[i].chall_img+"\"); background-position: center; background-repeat: no-repeat; background-size: cover; '><div class='prob'>"+k+"</div></div>";
                     document.getElementsByClassName(currentSquare)[1].addEventListener("click", showChall);    
                 } catch (e) {
 

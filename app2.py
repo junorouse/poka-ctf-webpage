@@ -198,7 +198,7 @@ def get_challs():
             elif session['username'] == 'kaist':
                 is_postech = False            
 
-        challs.append({'chall_id': challenge.chall_id, 'chall_title': challenge.chall_title, 'chall_score': challenge.chall_score, 'is_kaist': is_kaist, 'is_postech': is_postech})
+        challs.append({'chall_id': challenge.chall_id, 'chall_img': challenge.chall_img, 'chall_title': challenge.chall_title, 'chall_score': challenge.chall_score, 'is_kaist': is_kaist, 'is_postech': is_postech})
 
     x['status'] = 'true'
     x['challs'] = challs
