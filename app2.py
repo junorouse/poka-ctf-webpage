@@ -149,6 +149,12 @@ def main():
             is_blind_postech = True
             auth_logs = ["[BLIND MODE]"]
 
+    if 'username' in session:
+        if session['username'] == 'admin':
+            return render_template('scoreboard.html', kaist_bingo_count=kaist_bingo_count, postech_bingo_count=postech_bingo_count,
+        kaist_score=kaist_score, postech_score=postech_score, is_login=login_msg, is_end=app.config['is_finish'], notices=notices, auth_logs=auth_logs,
+        is_blind_kaist=is_blind_kaist, is_blind_postech=is_blind_postech)
+
     return render_template('index2.html', kaist_bingo_count=kaist_bingo_count, postech_bingo_count=postech_bingo_count,
         kaist_score=kaist_score, postech_score=postech_score, is_login=login_msg, is_end=app.config['is_finish'], notices=notices, auth_logs=auth_logs,
         is_blind_kaist=is_blind_kaist, is_blind_postech=is_blind_postech)
@@ -306,6 +312,7 @@ def go_end():
         app.config['is_finish'] = True
 
     return 'd'
+
 
 
 @app.teardown_request
