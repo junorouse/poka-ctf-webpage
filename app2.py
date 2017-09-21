@@ -76,25 +76,22 @@ def main():
     # get auth log
 
     kaist_bingo = [
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0]
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]
     ]
 
     postech_bingo = [
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0]
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]
     ]
 
     kaist_score, postech_score = 0, 0
 
-    breakthrough = list(range(25))
-
+    breakthrough = list(range(16))
 
     t_notices = Notice.query.order_by(Notice.n_time.desc()).all()
     notices = []
@@ -109,10 +106,10 @@ def main():
         # for checking breakthrough
         breakthrough[t_auth_log.chall_id] = t_auth_log.username
         if t_auth_log.username == 'postech':
-            postech_bingo[int(t_auth_log.chall_id / 5)][t_auth_log.chall_id % 5] = 1
+            postech_bingo[int(t_auth_log.chall_id / 4)][t_auth_log.chall_id % 4] = 1
             postech_score += int(score)
         else:
-            kaist_bingo[int(t_auth_log.chall_id / 5)][t_auth_log.chall_id % 5] = 1
+            kaist_bingo[int(t_auth_log.chall_id / 4)][t_auth_log.chall_id % 4] = 1
             kaist_score += int(score)
 
         detail = "[{}] {} kills {}.".format(timestamp2str(t_auth_log.submit_time), t_auth_log.username, t_auth_log.chall_title)
@@ -152,7 +149,7 @@ def main():
             is_blind_postech = True
             auth_logs = ["[BLIND MODE]"]
 
-    return render_template('index.html', kaist_bingo_count=kaist_bingo_count, postech_bingo_count=postech_bingo_count,
+    return render_template('index2.html', kaist_bingo_count=kaist_bingo_count, postech_bingo_count=postech_bingo_count,
         kaist_score=kaist_score, postech_score=postech_score, is_login=login_msg, is_end=app.config['is_finish'], notices=notices, auth_logs=auth_logs,
         is_blind_kaist=is_blind_kaist, is_blind_postech=is_blind_postech)
 
