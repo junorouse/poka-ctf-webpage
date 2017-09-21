@@ -318,9 +318,12 @@ def go_end():
 @app.route('/api/get_firstblood')
 def get_firstblood():
     x = {}
-    x['status'] = True
     a = AuthLog.query.filter((AuthLog.submit_time + 20 > int(time())) & (AuthLog.is_solve == True)).first()
-    x['data'] = {'who': a.username, 'what': a.chall_title}
+    try:
+        x['status'] = True
+        x['data'] = {'who': a.username, 'what': a.chall_title}
+    except:
+        x['status'] = False
     return dumps(x)
 
 
