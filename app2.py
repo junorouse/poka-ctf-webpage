@@ -326,6 +326,7 @@ def get_firstblood():
         x['status'] = True
         x['data'] = {'who': a[0].username, 'what': a[0].chall_title}
     except:
+        x['status'] = False
         pass
     return dumps(x)
 
