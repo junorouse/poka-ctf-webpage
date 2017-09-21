@@ -320,10 +320,8 @@ def get_firstblood():
     x = {}
     x['status'] = False
     a = AuthLog.query.filter((AuthLog.submit_time + 20 > int(time())) & (AuthLog.is_solve == True)).all()
-    if len(AuthLog.query.filter(AuthLog.chall_id == a.chall_id).all()) >= 2:
-        return dumps(x)
     try:
-        if len(a) >= 2:
+        if len(AuthLog.query.filter(AuthLog.chall_id == a[0].chall_id).all()) >= 2:
             return dumps(x)
         x['status'] = True
         x['data'] = {'who': a[0].username, 'what': a[0].chall_title}
