@@ -320,6 +320,8 @@ def get_firstblood():
     x = {}
     x['status'] = False
     a = AuthLog.query.filter((AuthLog.submit_time + 20 > int(time())) & (AuthLog.is_solve == True)).all()
+    if len(AuthLog.query.filter(AuthLog.chall_id == a.chall_id).all()) >= 2:
+        return dumps(x)
     try:
         if len(a) >= 2:
             return dumps(x)
