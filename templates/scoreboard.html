@@ -144,6 +144,20 @@
     let isBlindKaist = {% if is_blind_postech %}1{% else %}0{% endif %};
 </script>
 <script src="/static/wtf.js"></script>
+<script>
+    setInterval(function() {
+    $.ajax({
+        type: 'get',
+        url: '/api/get_firstblood',
+        success: function(data) {
+            var data = JSON.parse(data);
+            if (data.status)
+                document.location.href = "/firstblood/"+data.data.who+"/"+data.data.what;
+        }
+    });
+    }, 2000);
+
+</script>
 </body>
 
 </html>
