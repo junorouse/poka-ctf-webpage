@@ -6,6 +6,7 @@ from models import *
 from json import dumps, loads
 from random import randint
 from datetime import datetime
+from time import time
 
 app = Flask(__name__)
 app.secret_key = "sadfjlaksdfjkalsfjlkajfklajskl23jkl42kmsdlf"
@@ -313,6 +314,14 @@ def go_end():
 
     return 'd'
 
+
+@app.route('/api/get_firstblood')
+def get_firstblood():
+    x = {}
+    x['status'] = True
+    a = AuthLog.query.filter((AuthLog.submit_time + 20 > int(time())) & (AuthLog.is_solve == True)).first()
+    x['data'] = {'who': a.username, 'what': a.chall_title}
+    return dumps(x)
 
 
 @app.teardown_request
