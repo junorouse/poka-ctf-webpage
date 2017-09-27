@@ -232,6 +232,7 @@ def get_detail(chall_id):
 @app.route("/api/auth", methods=['POST'])
 @login_required
 def auth():
+    return ''#chall_id = int(request.form['chall_id'])
     chall_id = int(request.form['chall_id'])
     if session['username'] == 'admin':
         x = {}
